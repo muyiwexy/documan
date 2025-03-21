@@ -6,34 +6,12 @@ async function syncUserWithPermit(user) {
   return;
 }
 
-async function getPermitioUser(key) {
-  try {
-    const user = await permit.api.users.getByKey(key);
-    return user;
-  } catch (error) {
-    return null;
-  }
-}
-
 async function assignResourceInstanceRoleToUser(
   useremail,
   role,
-  resource_instance,
-  department
+  resource_instance
 ) {
   try {
-    const user = await getPermitioUser(useremail);
-
-    if (!user) {
-      await syncUserWithPermit({
-        email: useremail,
-        key: useremail,
-        attributes: {
-          department: department,
-        },
-      });
-    }
-
     const assignedRole = await permit.api.roleAssignments.assign({
       user: useremail,
       role: role,

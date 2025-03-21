@@ -82,8 +82,7 @@ module.exports.createDocument = async (event) => {
     const assignedRole = await assignResourceInstanceRoleToUser(
       userEmail,
       "owner",
-      `Document:${createdInstance.key}`,
-      department
+      `Document:${createdInstance.key}`
     );
     console.log("ASSIGNED ROLE:", assignedRole);
     if (!assignedRole) {

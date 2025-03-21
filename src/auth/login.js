@@ -37,7 +37,11 @@ exports.handler = async (event) => {
     }
 
     const token = jwt.sign(
-      { sub: user.email, department: user.department },
+      {
+        sub: user.email,
+        department: user.department,
+        classification: user.classification,
+      },
       email,
       { expiresIn: "1h" }
     );

@@ -23,6 +23,7 @@ exports.handler = async (event) => {
       userId: verified.sub,
       email: verified.sub,
       department: verified.department,
+      classification: verified.classification,
     };
 
     return generatePolicy(verified.sub, "Allow", event.methodArn, context);
